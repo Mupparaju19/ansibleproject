@@ -1,0 +1,6 @@
+key_name: annis
+region: us-west-2
+image_id: ami-00c257e12d6828491  # Ubuntu AMI
+instance_type: t2.micro
+security_group: launch-wizard-26
+subnet_id: subnet-0860dff92ea555839
