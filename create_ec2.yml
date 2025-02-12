@@ -1,0 +1,22 @@
+---
+- name: Provision EC2 instance with Ubuntu
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Launch EC2 Instance
+      amazon.aws.ec2_instance:
+        key_name: annis
+        region: us-west-2  # Replace with your preferred region
+        image_id: ami-00c257e12d6828491  # Replace with the Ubuntu AMI ID in your region
+        instance_type: t2.micro
+        security_group: 	launch-wizard-26
+        subnet_id: subnet-0860dff92ea555839
+        count: 1
+        wait: yes
+        tags:
+          Name: "Ansible-EC2"
+      register: ec2
+
+    - name: Output instance details
+      debug:
+        var: ec2.instances[0]
